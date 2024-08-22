@@ -5,7 +5,6 @@ const AddProduct = () => {
   const productPrice = useRef();
   const productCategory = useRef();
   const productCompany = useRef();
-  const [error, setError] = useState(false);
 
   const onClickAddProd = async () => {
     const name = productName.current.value;
@@ -37,7 +36,11 @@ const AddProduct = () => {
       const alertMessage = newMessage.join(" ");
       alert(alertMessage);
     }
-    console.log(data);
+    alert("Product Added Successfully");
+    productName.current.value = "";
+    productPrice.current.value = "";
+    productCategory.current.value = "";
+    productCompany.current.value = "";
   };
 
   return (

@@ -26,14 +26,15 @@
 }
 
 .footer{
-  position: absolute;
-  bottom: 0;
+  /* position: absolute;
+  bottom: 0; */
   width: 100%;
   background-color: skyblue;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 50px;
+  margin-top: 20px;
 }
 
 .register{
@@ -57,18 +58,50 @@
 }
 
 .login{
-  position: absolute;
-  left: 30%;
-  top: 12%;
+  margin-left: 30%;
 }
 
-.addProduct{
-  margin-left: 25%;
-  /* margin-top: 5%; */
+.addProduct,.updateProduct{
+  margin-left: 30%;
 }
-/* .invalid_input{
-    display: block;
-    margin-top: -18px;
-    margin-left: 20px;
-    color: red;
-} */
+
+.products{
+  margin-left: 20%;
+    margin-top: 2%;
+    text-align: center;
+    width: 65%;
+}
+.products table{
+  width: 100%;
+    border: 2px solid skyblue;
+}
+.products table tr td{
+  border: 1px solid skyblue;
+  padding: 10px;
+}
+.products table tr th{
+  border: 1px solid skyblue;
+  padding: 10px;
+}
+
+.operations{
+  padding: 5px 5px;
+    background: skyblue;
+    border: 1px solid #8f8b8b;
+    border-radius: 3px;
+    margin-right: 3px;
+}
+.btn_link{
+  text-decoration: none;
+  list-style-type: none;
+  color: black;
+}
+
+.search_input{
+  width: 350px;
+  height: 45px;
+  margin: 10px 0px 17px 0px;
+  padding: 0px 15px;
+  border: 2px solid skyblue;
+  border-radius: 2px;
+}
