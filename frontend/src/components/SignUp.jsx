@@ -23,10 +23,13 @@ const SignUp = () => {
       },
     });
     const data = await result.json();
-    localStorage.setItem("user", JSON.stringify(data.data.user));
-    if (data.data.user) {
+    if (data.data.token) {
+      localStorage.setItem("token", JSON.stringify(data.data.token));
+      localStorage.setItem("user", JSON.stringify(data.data.user));
       navigate("/");
     }
+    // if (data.data.user) {
+    // }
   };
 
   useEffect(() => {

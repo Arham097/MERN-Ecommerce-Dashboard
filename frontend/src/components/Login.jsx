@@ -20,11 +20,13 @@ const Login = () => {
       },
     });
     const data = await result.json();
+    console.log(data);
     if (data.status === "fail") {
       alert(data.message);
     }
-    if (data.data.user) {
+    if (data.data.token) {
       localStorage.setItem("user", JSON.stringify(data.data.user));
+      localStorage.setItem("token", JSON.stringify(data.data.token));
       navigate("/");
     }
   };

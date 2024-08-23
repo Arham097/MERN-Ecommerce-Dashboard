@@ -5,22 +5,22 @@ const router = express.Router();
 
 
 router.route('/add-product')
-  .post(productController.addProduct);
+  .post(productController.verifyToken, productController.addProduct);
 
 router.route('/delete/:id')
-  .delete(productController.deleteProduct);
+  .delete(productController.verifyToken, productController.deleteProduct);
 
 router.route('/update/:id')
-  .patch(productController.updateProduct);
+  .patch(productController.verifyToken, productController.updateProduct);
 
 router.route('/')
-  .get(productController.getAllProducts);
+  .get(productController.verifyToken, productController.getAllProducts);
 
 router.route('/:id')
-  .get(productController.getProductById);
+  .get(productController.verifyToken, productController.getProductById);
 
 router.route('/search/:key')
-  .get(productController.searchProduct);
+  .get(productController.verifyToken, productController.searchProduct);
 
 
 module.exports = router;

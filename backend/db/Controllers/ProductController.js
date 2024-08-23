@@ -1,4 +1,27 @@
 const Product = require('../Model/Product')
+const jwt = require('jsonwebtoken');
+const jwtKey = 'e-commerce';
+
+exports.verifyToken = (req, res, next) => {
+  let token = req.headers.authorization;
+  if (!token) {
+    return res.status(401).json({
+      status: 'failed',
+      message: 'Unauthorized'
+    })
+  }
+  token = token.split(' ')[1];
+  jwt.verify(token, jwtKey, (err, user) => {
+    if (err) {
+      return res.status(403).json({
+        status: 'failed',
+        message: 'Forbidden'
+      })
+    }
+    req.user = user;
+    next();
+  })
+}
 
 exports.addProduct = async (req, res) => {
   try {

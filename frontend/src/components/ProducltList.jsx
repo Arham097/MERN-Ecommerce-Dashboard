@@ -7,13 +7,21 @@ const ProductList = () => {
     addItems();
   }, []);
   const addItems = () => {
-    fetch("http://localhost:3000/products")
+    fetch("http://localhost:3000/products", {
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => setProducts(data.data ? data.data.products : []));
   };
   const deleteItem = async (id) => {
-    let result = await fetch(`http://localhost:3000/products/${id}`, {
+    let result = await fetch(`http://localhost:3000/products/delete/${id}`, {
       method: "DELETE",
+      headers: {
+        authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
+      },
     });
     if (result.ok) {
       alert("Product Deleted Successfully");
@@ -27,7 +35,11 @@ const ProductList = () => {
     if (!key) {
       return addItems();
     }
-    let result = await fetch(`http://localhost:3000/products/search/${key}`);
+    let result = await fetch(`http://localhost:3000/products/search/${key}`, {
+      headers: {
+        authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
+      },
+    });
     result = await result.json();
     setProducts(result.data.products);
   };
